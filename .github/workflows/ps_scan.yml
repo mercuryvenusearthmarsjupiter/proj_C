@@ -25,4 +25,4 @@ jobs:
           org_repo: ${{ github.repository }}
           branch: ${{ matrix.branch }}
           github_token: ${{ secrets.MVEM_ORGSECRET }}
-          since: ${{ inputs.since }}
+          since: ${{ github.event.inputs.since }}
