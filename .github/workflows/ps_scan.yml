@@ -1,0 +1,27 @@
+name: p_s scan
+
+on:
+  workflow_dispatch:
+    inputs:
+      since:
+        description: 'since last few weeks'
+        required: false
+        type: string
+        default: '1 week ago'
+
+jobs:
+  clone-branches:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        branch: [ main ] # Convert the comma-separated input into a list
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Send PRs for check
+        uses: mercuryvenusearthmarsjupiter/proj_D@main
+        with:
+          org_repo: ${{ github.repository }}
+          branch: ${{ matrix.branch }}
+          github_token: ${{ secrets.MVEM_ORGSECRET }}
