@@ -5,7 +5,7 @@ on:
     inputs:
       since:
         description: 'since last few weeks'
-        required: false
+        required: true
         type: string
         default: '1 week ago'
 
@@ -25,3 +25,4 @@ jobs:
           org_repo: ${{ github.repository }}
           branch: ${{ matrix.branch }}
           github_token: ${{ secrets.MVEM_ORGSECRET }}
+          since: ${{ inputs.since }}
